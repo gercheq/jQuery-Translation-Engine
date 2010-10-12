@@ -20,34 +20,36 @@
   // plugin definition
   //
   $.fn.translationEngine = function(options) {
-		debug(this);
- 		
-		// build main options before element iteration
-		var opts = $.extend({}, $.fn.translationEngine.defaults, options);
-		
-		lang = $.fn.translationEngine.getCookie('siteLanguage');
-  	// if (!($.fn.translationEngine.supportedLanguages.indexOf(lang) > -1))
-  	// 	lang = null;
+    debug(this);
 
-  	if (!lang){
-  		lang='en_US';
-  		$.fn.translationEngine.setCookie('siteLanguage', lang, new Date(new Date().getTime()+(86400000*30)), "/");
-  	}
+    // build main options before element iteration
+    var opts = $.extend({}, $.fn.translationEngine.defaults, options);
+		
+    lang = $.fn.translationEngine.getCookie('siteLanguage');
+    // if (!($.fn.translationEngine.supportedLanguages.indexOf(lang) > -1))
+    // 	lang = null;
+
+    if (!lang){
+    	lang='en_US';
+    	$.fn.translationEngine.setCookie('siteLanguage', lang, new Date(new Date().getTime()+(86400000*30)), "/");
+    }
   
     // Add language as class name to the body
     // in order to change styles in different languages
-    // such as background images  
-	  document.getElementsByTagName('body')[0].className += lang;
+    // such as background images
+    document.getElementsByTagName('body')[0].className += lang;
 	  
 	  
-	  // Keep original pointer to this
-	  // in order to reference it in ajax call
-	  var originalThis = this;
-		 
-  	$.ajax({
-  		url: opts.stringsDirectory + lang + ".js",
-  		complete: function(req) {
-  			oTranslations = eval("(" + req.responseText + ")"); 
+    // Keep original pointer to this
+    // in order to reference it in ajax call
+    var originalThis = this;
+		
+    var jsonURL = opts.stringsDirectory + lang + ".json";
+  	
+  	$.getJSON(jsonURL, function(data) {
+  	   
+				
+    		oTranslations = data;
 				
 				// String Translations should be made at this point 
 				// after ajax call is completed.
@@ -57,9 +59,7 @@
 
     			// build element specific options
     			var o = $.meta ? $.extend({}, opts, $this.data()) : opts;
-
-
-
+    			
           // gather information from element id
           // possible id alternatives are:
           // tr-your_element_id
@@ -69,33 +69,26 @@
           //
           // DO NOT USE "-" in your_element_ids
           // DO NOT USE "src" "value" & "href" in your_element_ids
-    			var substrings = this.id.split('-');
+          var substrings = this.id.split('-');
 
-    			if(substrings[1] == "value"){
-    				// translate form elements
-    				$this.val(oTranslations[substrings[2]]); 
-    			}
-    			else if( (substrings[1] == "href") || (substrings[1] == "title") || (substrings[1] == "src")  ){
-    				// translate link attributes href and title
-    				// translate image attribute src
-    				$this.attr(substrings[1], oTranslations[substrings[2]]);  
-    			}
-    			else{
-    				// translate inline text
-    				$this.html(oTranslations[substrings[1]]);
-    			} 
- 
+          if(substrings[1] == "value"){
+          	// translate form elements
+          	$this.val(oTranslations[substrings[2]]); 
+          }
+          else if( (substrings[1] == "href") || (substrings[1] == "title") || (substrings[1] == "src")  ){
+          	// translate link attributes href and title
+          	// translate image attribute src
+          	$this.attr(substrings[1], oTranslations[substrings[2]]);  
+          }
+          else{
+          	// translate inline text
+          	$this.html(oTranslations[substrings[1]]);
+          } 
+
     		});	
-    		
-    		
-    		
-				
-  		} // end of ajax complete
-  	});  // end of $.ajax
-		
-	
-
-	
+    		 
+  		} // end of json callback
+  	);  // end of $.ajax 
   };
 	
 	

@@ -1,0 +1,19 @@
+{
+  "hello_world" : "merhaba dunya",
+	"google_text" : "www.google.com'a gidelim",
+  "google_title" : "bu linkin title'i olsun bu da",
+  "google_link" : "http://www.google.com.tr",
+	"legend" : "al sana bir form",
+	"input_text" : "hali hazirda gelen yazi",
+	"option_1" : "secenek 1",
+	"option_2" : "secenek 2",
+  "primary_button" : "turkce buton",
+  "test_image" : "images/turkish.png"
+}
+
+
+
+
+
+
+
