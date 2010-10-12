@@ -12,7 +12,10 @@
 	input_text: "hali hazirda gelen yazi",
 	option_1: "secenek 1",
 	option_2: "secenek 2",
-  primary_button: "turkce buton"
+  primary_button: "turkce buton",
+  
+  // image
+  test_image: "images/turkish.png"
 	
 	
 }

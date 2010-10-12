@@ -34,63 +34,67 @@
   		$.fn.translationEngine.setCookie('siteLanguage', lang, new Date(new Date().getTime()+(86400000*30)), "/");
   	}
   
-	
-		
+    // Add language as class name to the body
+    // in order to change styles in different languages
+    // such as background images  
+	  document.getElementsByTagName('body')[0].className += lang;
+	  
+	  
+	  // Keep original pointer to this
+	  // in order to reference it in ajax call
+	  var originalThis = this;
 		 
   	$.ajax({
   		url: opts.stringsDirectory + lang + ".js",
   		complete: function(req) {
   			oTranslations = eval("(" + req.responseText + ")"); 
 				
-				// STRING CHANGES SHOULD BE MADE AT THIS POINT
+				// String Translations should be made at this point 
+				// after ajax call is completed.
+    		// Iterate and reformat each matched element
+    		return originalThis.each( function(){
+    			$this = $(this);
+
+    			// build element specific options
+    			var o = $.meta ? $.extend({}, opts, $this.data()) : opts;
+
+
+
+          // gather information from element id
+          // possible id alternatives are:
+          // tr-your_element_id
+          // tr-src-your_element_id
+          // tr-value-your_element_id
+          // tr-href-your_element_id
+          //
+          // DO NOT USE "-" in your_element_ids
+          // DO NOT USE "src" "value" & "href" in your_element_ids
+    			var substrings = this.id.split('-');
+
+    			if(substrings[1] == "value"){
+    				// translate form elements
+    				$this.val(oTranslations[substrings[2]]); 
+    			}
+    			else if( (substrings[1] == "href") || (substrings[1] == "title") || (substrings[1] == "src")  ){
+    				// translate link attributes href and title
+    				// translate image attribute src
+    				$this.attr(substrings[1], oTranslations[substrings[2]]);  
+    			}
+    			else{
+    				// translate inline text
+    				$this.html(oTranslations[substrings[1]]);
+    			} 
+ 
+    		});	
+    		
+    		
+    		
 				
   		} // end of ajax complete
   	});  // end of $.ajax
 		
 	
-		// 
-		// iterate and reformat each matched element
-		//
-		return this.each( function(){
-			$this = $(this);
-		 
-			// build element specific options
-			var o = $.meta ? $.extend({}, opts, $this.data()) : opts;
-			
-	
-			var substrings = this.id.split('-');
-			
-			if(substrings[1] == "value"){
-				// translate form elements
-				$this.val(oTranslations[substrings[2]]); 
-			}
-			else if( (substrings[1] == "href") || (substrings[1] == "title") ){
-				// translate link attributes href and title
-				$this.attr(substrings[1], oTranslations[substrings[2]]);  
-			}
-			else{
-				// translate inline text
-				$this.html(oTranslations[substrings[1]]);
-			} 
-			
-			/*
-			// translate text
-			$("#tr-" + k + ", span#tr-" + k).html(v); 
-			
-			// translate link attributes href and title
-			$("a#tr-href-" + k).attr('href', v);		
-			$("a#tr-title-" + k).attr('title', v); 
-			
-			// translate form elements
-			$("input#tr-value-" + k).val(v);
-			$("button#tr-value-" + k).val(v);  
-			
-			// translate image replacements
-			$("img.s-tr-" + k).attr('src', v);
-			$("div#bg-tr-" + k + ",span.bg-tr-" + k).css('background-image', v);	 
-			*/	
-		});	
-	
+
 	
   };
 	

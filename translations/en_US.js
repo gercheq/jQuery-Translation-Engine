@@ -12,7 +12,11 @@
 	input_text: "translated ** input field text",
 	option_1: "translated ** option 1",
 	option_2: "translated ** option 2",
-  primary_button: "translated ** primary button"
+  primary_button: "translated ** primary button",
+  
+  // image
+  test_image: "images/english.png"
+  
   
 }
 
