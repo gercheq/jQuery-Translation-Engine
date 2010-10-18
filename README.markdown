@@ -86,8 +86,8 @@ Here is how a sample JSON file is setup:
 * Do not use "src" "value" & "href" in your_element_ids
 * Translation engine adds language string (en_US, tr_TR) as a body class to HTML. This will let you to define language specific styles. ie. If you're using image replacements for buttons, you can define new images for new languages. 
 
-  .search-button { background-image:url(images/button-background.png); }
-  .en_US .search-button{ background-image:url(images/button-background-US.png); }
+      .search-button { background-image:url(images/button-background.png); }
+      .en_US .search-button{ background-image:url(images/button-background-US.png); }
   
  
 ## Author
@@ -99,3 +99,5 @@ Here is how a sample JSON file is setup:
 [MIT License](http://www.opensource.org/licenses/mit-license.php)
 
 Copyright (c) 2010, Gercek Karakus (contact -[at]- gercekkarakus [*dot*] com)
+
+
