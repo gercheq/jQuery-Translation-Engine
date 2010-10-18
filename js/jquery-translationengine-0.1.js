@@ -46,9 +46,8 @@
 		
     var jsonURL = opts.stringsDirectory + lang + ".json";
   	
-  	$.getJSON(jsonURL, function(data) {
-  	   
-				
+  	$.getJSON(jsonURL, function(data) { 
+  	  
     		oTranslations = data;
 				
 				// String Translations should be made at this point 
@@ -83,12 +82,14 @@
           else{
           	// translate inline text
           	$this.html(oTranslations[substrings[1]]);
-          } 
-
-    		});	
-    		 
+          }  
+    		});	 
   		} // end of json callback
-  	);  // end of $.ajax 
+  	);  // end of $.getJSON 
+  	
+  	// fade in all the translated strings
+  	this.fadeIn();
+  	
   };
 	
 	
@@ -158,7 +159,7 @@
   //
   // Default Variables
 	//
-  $.fn.translationEngine.defaults = {
+  $.fn.translationEngine.defaults = { 
 		stringsDirectory: '/translations/',
 		supportedLanguages: 'en_US'
   };
