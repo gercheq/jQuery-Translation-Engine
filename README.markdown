@@ -10,11 +10,11 @@ You can browse the [demo](http://gercekdesign.com/jquery/jquery-translation-engi
 
 First, load [jQuery](http://jquery.com/) and then JTE plugin:
 
-    <!-- Grab Google CDN's jQuery. fall back to local if necessary -->
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
-    <script>!window.jQuery && document.write('<script src="js/jquery-1.4.2.min.js"><\/script>')</script>
+      <!-- Grab Google CDN's jQuery. fall back to local if necessary -->
+      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+      <script>!window.jQuery && document.write('<script src="js/jquery-1.4.2.min.js"><\/script>')</script>
     
-    <script src="/js/jquery.translationengine.js" type="text/javascript"></script>
+      <script src="/js/jquery.translationengine.js" type="text/javascript"></script>
 
 
 Now, let's attach it to strings on DOM ready:
@@ -31,45 +31,45 @@ Now, let's attach it to strings on DOM ready:
 
 This will replace all the strings with a class of '.tr' with the values that are defined in the JSON file. Sample markup:
 
-    <ul>
-    	<li><span class="tr" id="tr-hello_world">Hello World!</span></li>
-    	<li><a class="tr" id="tr-href-google_link" href="http://www.google.com"><span class="tr" id="tr-google_text">This is a link to www.google.com</span></a></li>      
-    </ul>
+      <ul>
+      	<li><span class="tr" id="tr-hello_world">Hello World!</span></li>
+      	<li><a class="tr" id="tr-href-google_link" href="http://www.google.com"><span class="tr" id="tr-google_text">This is a link to www.google.com</span></a></li>      
+      </ul>
 
-    <form action="#">
-      <fieldset>
-        <legend><span class="tr" id="tr-legend">Form legend</span></legend>
+      <form action="#">
+        <fieldset>
+          <legend><span class="tr" id="tr-legend">Form legend</span></legend>
   
-        <div><input type="text" class="tr" id="tr-value-input_text" value="input text english" /></div>  
-        <div>
-        	<select id="f4">
-        		<option class="tr" id="tr-option_1">Option 01</option>
-            <option class="tr" id="tr-option_2">Option 02</option>
-          </select>
-        </div> 
-        <div><input type="button" class="tr" id="tr-value-primary_button" value="button text english" /></div> 
-      </fieldset> 
-    </form>
+          <div><input type="text" class="tr" id="tr-value-input_text" value="input text english" /></div>  
+          <div>
+          	<select id="f4">
+          		<option class="tr" id="tr-option_1">Option 01</option>
+              <option class="tr" id="tr-option_2">Option 02</option>
+            </select>
+          </div> 
+          <div><input type="button" class="tr" id="tr-value-primary_button" value="button text english" /></div> 
+        </fieldset> 
+      </form>
 
-    <div>
-      <img src="images/french.png" class="tr" id="tr-src-test_image"/>
-    </div>
+      <div>
+        <img src="images/french.png" class="tr" id="tr-src-test_image"/>
+      </div>
 
 
 Here is how a sample JSON file is setup:
 
-    { 
-      "hello_world" : "translated ** hello world",
-      "google_text" : "translated ** this is a link to www.google.com",
-      "google_title" : "translated ** link title",
-      "google_link" : "http://www.google.com/search?q=google+link+translated",
-      "legend" : "translated ** form legend",
-      "input_text" : "translated ** input field text",
-      "option_1" : "translated ** option 1",
-      "option_2" : "translated ** option 2",
-      "primary_button" : "translated ** primary button",
-      "test_image" : "images/english.png"
-    }
+      { 
+        "hello_world" : "translated ** hello world",
+        "google_text" : "translated ** this is a link to www.google.com",
+        "google_title" : "translated ** link title",
+        "google_link" : "http://www.google.com/search?q=google+link+translated",
+        "legend" : "translated ** form legend",
+        "input_text" : "translated ** input field text",
+        "option_1" : "translated ** option 1",
+        "option_2" : "translated ** option 2",
+        "primary_button" : "translated ** primary button",
+        "test_image" : "images/english.png"
+      }
 
 
 **For more usage and examples**: [http://gercekdesign.com/jquery/jquery-translation-engine](http://gercekdesign.com/jquery/jquery-translation-engine)
