@@ -19,14 +19,14 @@ First, load [jQuery](http://jquery.com/) and then JTE plugin:
 
 Now, let's attach it to strings on DOM ready:
 
-    <pre>
+    
       (function($){ 
         $('.tr').translationEngine({
   				supportedLanguages: "tr_TR, en_US",
   				stringsDirectory: "http://www.gercekdesign.com/jquery/jquery-translation/translations/"
   			});
       })(window.jQuery); 
-    </pre>
+    
 
 
 This will replace all the strings with a class of '.tr' with the values that are defined in the JSON file. Sample markup:
