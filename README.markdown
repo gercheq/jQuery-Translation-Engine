@@ -4,7 +4,7 @@ JTE is a jQuery plugin that translates strings on the fly. After DOM gets ready,
 JTE downloads the strings JSON file that was specified by the user and replaces
 all the specified strings with the ones that exist in the JSON file. 
 
-You can browse the [demo](http://gercekdesign.com/jquery/jquery-translation-engine) to see a working version.
+You can browse the [demo](http://www.gercekdesign.com/jquery/jquery-translation-engine) to see a working version.
 
 ## Usage
 
@@ -72,7 +72,7 @@ Here is how a sample JSON file is setup:
       }
 
 
-**For more usage and examples**: [http://gercekdesign.com/jquery/jquery-translation-engine](http://gercekdesign.com/jquery/jquery-translation-engine)
+**For more usage and examples**: [http://gercekdesign.com/jquery/jquery-translation-engine](http://www.gercekdesign.com/jquery/jquery-translation-engine)
 
 
 ## Notes
